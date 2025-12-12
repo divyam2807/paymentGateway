@@ -24,20 +24,20 @@
 
     h1 {
         font-size: 3.2rem;
-        margin-top: 80px;
+        margin-top: 60px;
         text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
         animation: fadeIn 2s ease forwards;
     }
 
     h2 {
-        margin-top: 20px;
+        margin-top: 10px;
         font-size: 2rem;
         animation: fadeIn 3s ease forwards;
     }
 
     p {
-        margin-top: 25px;
-        font-size: 1.5rem;
+        margin-top: 20px;
+        font-size: 1.4rem;
         max-width: 700px;
         margin-left: auto;
         margin-right: auto;
@@ -50,11 +50,30 @@
         to { opacity: 1; transform: translateY(0); }
     }
 
+    .photo-card {
+        margin: 40px auto;
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 20px;
+        width: 85%;
+        max-width: 380px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        animation: fadeIn 3.5s ease forwards;
+    }
+
+    .photo-card img {
+        width: 100%;
+        border-radius: 15px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+
     .heart {
         position: fixed;
         color: rgba(255,255,255,0.7);
         animation: floatUp 6s linear infinite;
         font-size: 20px;
+        z-index: -1;
     }
 
     @keyframes floatUp {
@@ -66,20 +85,25 @@
 <body>
 
 <h1>Happy 16 Months Baby ❤️</h1>
-<h2>You mean the world to me 🤍</h2>
+<h2>You mean the whole world to me 🤍</h2>
+
+<!-- Photo Section -->
+<div class="photo-card">
+    <img src="assets/picWithHer.jpg" alt="Us Together">
+</div>
 
 <p>
     I know I was rude…  
-    and I am really, really sorry.  
+    and I am truly, deeply sorry.  
     Mujhe maaf kar na baby.  
-    I love you more than anything in this world.  
-    Tum mere liye bohot precious ho.  
-    Please don’t be upset…  
-    I promise I’ll be better for you, always. ❤️
+    You’re the most precious person in my life.  
+    I love you endlessly.  
+    Please don’t stay upset…  
+    I promise I’ll always try to be better for you. ❤️
 </p>
 
 <script>
-// Create floating hearts
+// Floating hearts animation
 function createHeart() {
     const heart = document.createElement("div");
     heart.classList.add("heart");
@@ -87,7 +111,6 @@ function createHeart() {
     heart.style.left = Math.random() * 100 + "vw";
     heart.style.animationDuration = (Math.random() * 4 + 3) + "s";
     document.body.appendChild(heart);
-
     setTimeout(() => heart.remove(), 6000);
 }
 
