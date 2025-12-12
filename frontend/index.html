@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pay Me — Demo</title>
+  <style>
+    body{font-family:system-ui,Segoe UI,Roboto,Arial;max-width:720px;margin:40px auto;padding:16px}
+    input,button{font-size:16px;padding:8px;margin-top:8px}
+  </style>
+</head>
+<body>
+  <h1>Pay Me — Demo</h1>
+  <p>Enter amount (INR). You will be redirected to a secure payment page.</p>
+  <label>Amount (₹): <input id="amount" type="number" min="1" value="10" /></label><br/>
+  <button id="pay">Pay</button>
+
+  <script>
+    const BACKEND = 'https://YOUR_BACKEND_DOMAIN'; // replace with your deployed backend URL
+
+    async function createLink(amount) {
+      const res = await fetch(BACKEND + '/api/create-link', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ amount_in_inr: amount })
+      });
+      if (!res.ok) {
+        const txt = await res.text();
+        throw new Error('Server error: ' + txt);
+      }
+      return res.json();
+    }
+
+    document.getElementById('pay').addEventListener('click', async () => {
+      const raw = document.getElementById('amount').value;
+      const amount = Math.max(1, Number(raw) || 0);
+      try {
+        const data = await createLink(amount);
+        if (data.link_url) {
+          window.location.href = data.link_url;
+        } else {
+          alert('No payment link returned. Check server logs.');
+          console.log(data);
+        }
+      } catch (e) {
+        alert('Error creating payment link: ' + e.message);
+      }
+    });
+  </script>
+</body>
+</html>
