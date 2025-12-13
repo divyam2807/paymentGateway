@@ -3,161 +3,146 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>For You ❤️</title>
+  <title>Our 15 Months 💫</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Caveat:wght@600&display=swap" rel="stylesheet">
+
   <style>
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
       height: 100vh;
+      background: linear-gradient(135deg, #fdfbfb, #ebedee);
       display: flex;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(135deg, #fde2e4, #fadadd);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Poppins', sans-serif;
+      color: #333;
     }
 
-    .container {
+    .wrapper {
+      background: white;
+      width: 92%;
+      max-width: 600px;
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+      padding: 30px 28px 40px;
       text-align: center;
+      position: relative;
     }
 
     h1 {
-      color: #d6336c;
+      font-family: 'Caveat', cursive;
+      font-size: 38px;
+      margin-bottom: 10px;
+      color: #ff5c8a;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #777;
       margin-bottom: 30px;
-      font-size: 28px;
     }
 
-    .open-btn {
-      padding: 15px 35px;
-      font-size: 18px;
-      border: none;
-      border-radius: 30px;
-      background: #ff6f91;
-      color: white;
-      cursor: pointer;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-      transition: transform 0.3s ease;
-    }
-
-    .open-btn:hover {
-      transform: scale(1.1);
-    }
-
-    /* Modal overlay */
-    .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.4);
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-
-    .modal.show {
+    .timeline {
       display: flex;
+      flex-direction: column;
+      gap: 18px;
+      text-align: left;
     }
 
-    /* Notebook style */
-    .notebook {
-      background: #fffdf7;
-      width: 90%;
-      max-width: 500px;
-      padding: 40px 35px;
-      border-radius: 12px;
+    .moment {
+      padding: 16px 18px;
+      border-radius: 14px;
+      background: #f8f9fa;
       position: relative;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-      background-image: repeating-linear-gradient(
-        to bottom,
-        transparent 0px,
-        transparent 27px,
-        #f1c0c0 28px
-      );
+      animation: slideIn 0.6s ease both;
     }
 
-    .notebook::before {
-      content: "";
-      position: absolute;
-      left: 20px;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: #f28b82;
+    .moment:nth-child(odd) {
+      background: #fff0f5;
     }
 
-    .notebook h2 {
-      text-align: center;
-      color: #c9184a;
-      margin-bottom: 20px;
-      font-family: 'Georgia', serif;
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .message {
-      font-size: 18px;
-      line-height: 1.6;
-      color: #333;
-      font-family: 'Georgia', serif;
-      white-space: pre-line;
+    .moment strong {
+      display: block;
+      font-size: 13px;
+      color: #ff5c8a;
+      margin-bottom: 6px;
     }
 
-    .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 15px;
-      background: none;
+    .moment p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .footer {
+      margin-top: 28px;
+      font-family: 'Caveat', cursive;
+      font-size: 24px;
+      color: #444;
+    }
+
+    .btn {
+      margin-top: 18px;
+      padding: 12px 26px;
+      border-radius: 30px;
       border: none;
-      font-size: 22px;
+      background: #ff5c8a;
+      color: white;
+      font-size: 14px;
       cursor: pointer;
-      color: #999;
+      transition: transform 0.2s ease;
     }
 
-    .close-btn:hover {
-      color: #000;
+    .btn:hover {
+      transform: scale(1.05);
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <h1>Tap this 💌</h1>
-    <button class="open-btn" id="openModal">Open my heart</button>
-  </div>
+  <div class="wrapper">
+    <h1>Us, so far 💕</h1>
+    <div class="subtitle">A small reminder, for a heavy time</div>
 
-  <div class="modal" id="modal">
-    <div class="notebook">
-      <button class="close-btn" id="closeModal">×</button>
-      <h2>For You ❤️</h2>
-      <div class="message">
-Baby, it’s been 15 months together.
+    <div class="timeline">
+      <div class="moment">
+        <strong>15 months</strong>
+        <p>Baby, it’s been 15 months together — and every single one has mattered to me.</p>
+      </div>
 
-I know you are in a lot of pain and anxiety right now.
+      <div class="moment">
+        <strong>Right now</strong>
+        <p>I know you are carrying a lot of pain and anxiety, and some days feel heavier than others.</p>
+      </div>
 
-And I also know that no matter what happens, I love you so much — you mean the world to me.
+      <div class="moment">
+        <strong>What won’t change</strong>
+        <p>No matter what happens, I love you deeply. You truly mean the world to me.</p>
+      </div>
 
-So after all your exams are done, let’s go watch Dhurandaar and have lots of fun together.
+      <div class="moment">
+        <strong>What we’ll do next</strong>
+        <p>After all your exams are done, we’ll go watch <em>Dhurandaar</em>, laugh a lot, and enjoy being us.</p>
+      </div>
 
-Until then, please persevere through the work you need to do.
+      <div class="moment">
+        <strong>Until then</strong>
+        <p>Please keep going. I’m right here, quietly cheering for you every single day.</p>
       </div>
     </div>
+
+    <div class="footer">Always yours 🤍</div>
+    <button class="btn" onclick="alert('I’m proud of you ❤️')">One more thing</button>
   </div>
-
-  <script>
-    const openBtn = document.getElementById('openModal');
-    const closeBtn = document.getElementById('closeModal');
-    const modal = document.getElementById('modal');
-
-    openBtn.addEventListener('click', () => {
-      modal.classList.add('show');
-    });
-
-    closeBtn.addEventListener('click', () => {
-      modal.classList.remove('show');
-    });
-
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.classList.remove('show');
-      }
-    });
-  </script>
 
 </body>
 </html>
