@@ -1,230 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>For My Baby ❤️</title>
-
-<style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Just One Question ❤️</title>
+  <style>
     body {
-        margin: 0;
-        padding: 0;
-        background: linear-gradient(135deg, #fcb1b1, #ffdde1, #ffd6f2);
-        background-size: 400% 400%;
-        animation: bg 14s ease infinite;
-        font-family: "Poppins", sans-serif;
-        color: white;
-        text-align: center;
-        overflow: hidden;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow: hidden;
     }
 
-    @keyframes bg {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
+    .card {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      max-width: 400px;
     }
 
-    /* Password Screen */
-    #passwordScreen {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        backdrop-filter: blur(6px);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background: rgba(0,0,0,0.25);
-        animation: fadeIn 1.5s ease forwards;
+    h1 {
+      margin-bottom: 20px;
+      color: #e91e63;
     }
 
-    #passwordBox {
-        background: rgba(255,255,255,0.15);
-        padding: 25px;
-        border-radius: 20px;
-        width: 80%;
-        max-width: 350px;
-        box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    img {
+      width: 220px;
+      height: auto;
+      border-radius: 12px;
+      margin-bottom: 20px;
     }
 
-    #passwordBox input {
-        width: 80%;
-        padding: 12px;
-        border: none;
-        border-radius: 8px;
-        text-align: center;
-        font-size: 1.1rem;
-        outline: none;
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      position: relative;
     }
 
-    #passwordBox button {
-        margin-top: 15px;
-        padding: 10px 25px;
-        background: #ff5f91;
-        border: none;
-        color: white;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 1.1rem;
+    button {
+      padding: 12px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
     }
 
-    #passwordError {
-        margin-top: 10px;
-        font-size: 1rem;
-        color: #ffe6e6;
-        opacity: 0.8;
-        height: 20px;
+    #yesBtn {
+      background: #4caf50;
+      color: white;
     }
 
-    /* Main content */
-    .container {
-        margin-top: 20vh;
-        padding: 20px;
-        display: none; /* Hidden until correct password */
+    #noBtn {
+      background: #f44336;
+      color: white;
+      position: relative;
     }
 
-    #message {
-        font-size: 2rem;
-        max-width: 800px;
-        margin: 0 auto;
-        opacity: 0;
-        transform: translateY(20px);
-        animation: fadeIn 2s forwards;
-        min-height: 150px;
+    #yesBtn:hover {
+      transform: scale(1.1);
     }
-
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-
-    #nextBtn {
-        margin-top: 40px;
-        padding: 12px 28px;
-        background: #ff5f91;
-        border: none;
-        border-radius: 30px;
-        font-size: 1.2rem;
-        color: white;
-        cursor: pointer;
-        box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-        transition: 0.3s;
-    }
-
-    #nextBtn:hover {
-        background: #ff3c73;
-        transform: scale(1.05);
-    }
-
-    /* Hearts animation */
-    .heart {
-        position: fixed;
-        color: rgba(255,255,255,0.7);
-        animation: floatUp 7s linear infinite;
-        font-size: 1.5rem;
-        z-index: -1;
-    }
-
-    @keyframes floatUp {
-        from { transform: translateY(100vh) scale(0.5); opacity: 1; }
-        to { transform: translateY(-10vh) scale(1.2); opacity: 0; }
-    }
-</style>
-
+  </style>
 </head>
 <body>
-
-<!-- PASSWORD SCREEN -->
-<div id="passwordScreen">
-    <div id="passwordBox">
-        <h2>Enter the password, my love 💗</h2>
-        <h2>HINT: It is what i call you kratu</h2>
-        <input type="text" id="passInput" placeholder="Password">
-        <br>
-        <button onclick="checkPassword()">Unlock ❤️</button>
-        <div id="passwordError"></div>
+  <div class="card">
+    <h1 id="question">Do you love me? 💖</h1>
+    <img id="gif" src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" alt="cute gif" />
+    <div class="buttons">
+      <button id="yesBtn">Yes 😍</button>
+      <button id="noBtn">No 🙄</button>
     </div>
-</div>
+  </div>
 
-<!-- MAIN CONTENT (hidden initially) -->
-<div class="container" id="mainContent">
-    <div id="message">Click below, my love ❤️</div>
-    <button id="nextBtn">Next</button>
-</div>
+  <script>
+    const question = document.getElementById('question');
+    const gif = document.getElementById('gif');
+    const yesBtn = document.getElementById('yesBtn');
+    const noBtn = document.getElementById('noBtn');
 
-<script>
-// Password check
-function checkPassword() {
-    const input = document.getElementById("passInput").value.trim().toLowerCase();
-    const error = document.getElementById("passwordError");
+    let noCount = 0;
 
-    if (input === "kratu") {
-        document.getElementById("passwordScreen").style.display = "none";
-        document.getElementById("mainContent").style.display = "block";
-    } else {
-        error.innerText = "Wrong password, baby 😢";
+    const gifs = [
+      "https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif",
+      "https://media.giphy.com/media/l0HlBO7eyXzSZkJri/giphy.gif",
+      "https://media.giphy.com/media/26BRzozg4TCBXv6QU/giphy.gif",
+      "https://media.giphy.com/media/5GoVLqeAOo6PK/giphy.gif"
+    ];
+
+    noBtn.addEventListener('click', () => {
+      noCount++;
+
+      if (noCount < 3) {
+        question.textContent = "Are you sure? 🥺 Do you love me?";
+        gif.src = gifs[noCount % gifs.length];
+      } else {
+        question.textContent = "Hehe 😏 You don't have a choice now! Do you love me?";
+        gif.src = gifs[3];
+        enableNoEscape();
+      }
+    });
+
+    function enableNoEscape() {
+      noBtn.addEventListener('mouseover', moveNoButton);
+      noBtn.addEventListener('click', moveNoButton);
     }
-}
 
-// Floating hearts
-function createHeart() {
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = (Math.random() * 4 + 4) + "s";
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 7000);
-}
+    function moveNoButton() {
+      const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+      const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
 
-setInterval(createHeart, 400);
-
-// Messages
-const messages = [
-    "Babyyyyyyy I want to tell you something. ❤️",
-    "Every day with you feels special.",
-    "Every moment with you feels warm.",
-    "And every fight… hurts me more than you know.",
-    "I know I mess up sometimes.",
-    "I know I get rude sometimes.",
-    "But not once… NOT ONCE… has my love for you become even 1% less.",
-    "You are the closest to my heart.",
-    "You are the person I never want to lose.",
-    "And I am sorry, truly from my heart.",
-    "I want to grow with you…",
-    "Go deeper with you…",
-    "Understand you better…",
-    "Love you better…",
-    "And become someone who deserves you.",
-    "Stay with me…",
-    "Safely, gently, slowly…",
-    "And forever. ❤️"
-];
-
-let index = 0;
-
-document.getElementById("nextBtn").addEventListener("click", () => {
-    const msgBox = document.getElementById("message");
-
-    if (index < messages.length) {
-        msgBox.style.opacity = 0;
-        msgBox.style.transform = "translateY(20px)";
-        
-        setTimeout(() => {
-            msgBox.innerText = messages[index];
-            msgBox.style.opacity = 1;
-            msgBox.style.transform = "translateY(0)";
-        }, 300);
-
-        index++;
-    } else {
-        document.getElementById("nextBtn").innerText = "I Love You ❤️";
-        document.getElementById("nextBtn").disabled = true;
-        document.getElementById("nextBtn").style.background = "#8884";
+      noBtn.style.position = 'fixed';
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
     }
-});
-</script>
 
+    yesBtn.addEventListener('click', () => {
+      document.body.innerHTML = `
+        <div style="text-align:center;">
+          <h1 style="color:#e91e63;">I knew it! ❤️🥰</h1>
+          <img src="https://media.giphy.com/media/1hqb8LwPS2xCNCpWH8/giphy.gif" style="width:300px;border-radius:20px;" />
+          <p style="font-size:20px;">You just made my heart very happy 💕</p>
+        </div>
+      `;
+    });
+  </script>
 </body>
 </html>
